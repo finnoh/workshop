@@ -1,0 +1,224 @@
+---
+sidebar_position: 2
+title: "🤖 LLMs in Research"
+---
+
+# 🤖 LLMs in Research
+
+## Expert Perspectives on LLMs in Research
+
+The integration of Large Language Models (LLMs) into research workflows has sparked significant discussion among leading experts. François Chollet, the creator of Keras and author of "Deep Learning with Python," offers valuable insights on this topic:
+
+<Tweet tweetId="1789701269982228572" />
+
+## Benefits of LLMs in Research
+
+A comprehensive survey published in *Nature* revealed how researchers are currently benefiting from generative AI technologies. The survey highlights that LLMs are particularly valuable for researchers whose first language isn't English, with 56% of respondents citing this as a major benefit. Additionally, many researchers find that LLMs make coding faster (45%) and help summarize existing research (40%).
+
+```r
+# assisted by Cursor AI
+# Replicate Nature's 'Benefits of Generative AI' bar plot
+ddBenefits <- data.frame(
+  sBenefit = c(
+    "Helps researchers without English as a first language",
+    "Makes coding easier and faster",
+    "Summarizes other research to save time reading it",
+    "Speeds administrative tasks",
+    "Helps write manuscripts faster",
+    "Improves scientific search",
+    "Helps creative work by brainstorming new ideas",
+    "Generates new research hypotheses",
+    "Helps peer-review manuscripts faster",
+    "Other"
+  ),
+  dPercent = c(56, 45, 40, 38, 35, 33, 28, 18, 13, 3)
+)
+
+lOrder <- ddBenefits$sBenefit[order(ddBenefits$dPercent, decreasing = TRUE)]
+
+ggplot(ddBenefits, aes(x = reorder(sBenefit, dPercent), y = dPercent)) +
+  geom_col(fill = "#d2693a") +
+  coord_flip() +
+  scale_y_continuous(labels = function(x) paste0(x, "%"), limits = c(0, 60)) +
+  labs(
+    title = "Benefits of Generative AI",
+    subtitle = "Q: What do you think are currently the biggest benefits of generative AI for research?",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+## Privacy Considerations When Using LLMs
+
+When incorporating LLMs into your research workflow, privacy should be a primary concern. Commercial LLMs are trained on vast datasets, and importantly, they often retain the data you send to them through prompts and file uploads. This data may become part of the model's training data for future versions, creating potential privacy issues.
+
+### Key Privacy Concerns
+
+Before sharing information with an LLM, carefully evaluate the sensitivity of your data. Several types of content should raise immediate red flags:
+
+- Early drafts of unpublished papers that contain novel ideas or findings
+- Raw research data, especially if protected by non-disclosure agreements
+- Personal information such as names, email addresses, or other identifiable data
+
+Remember that regulatory frameworks like GDPR still apply when using LLMs, particularly when your data might be processed outside the European Union.
+
+## Institutional LLM Solutions
+
+### ERUDITE at Erasmus University
+
+For researchers concerned about data privacy, Erasmus University Rotterdam offers ERUDITE, an institutional LLM solution. This platform provides:
+
+- Access to GPT-4o through Microsoft Teams
+- Enhanced data security for sensitive research materials
+- Chat-based interface for research assistance
+
+### Open-Source LLMs on Snellius
+
+The Dutch national supercomputer, Snellius, offers another secure option for researchers. By hosting open-source LLMs on Snellius, you can ensure your data remains within the secure environment of the supercomputer without being transmitted to external servers.
+
+### Ollama for Local LLM Deployment
+
+[Ollama](https://ollama.com/) provides a framework for running smaller LLMs directly on your own machine. This free, open-source solution enables:
+
+- Complete privacy as data never leaves your computer
+- Integration with other tools and frameworks
+- Flexibility to use different open-source models based on your needs
+
+## Institutional Guidelines for LLM Use
+
+Understanding your institution's guidelines for LLM use is essential for responsible research practices. At Erasmus University Rotterdam, the guidelines clearly distinguish between acceptable and prohibited use cases.
+
+### Acceptable Use Cases
+LLMs can appropriately support research through:
+- Literature reviews for personal understanding
+- Assistance with coding tasks
+- Refinement of written content
+- Support during ideation phases
+
+### Prohibited Use Cases
+Researchers should avoid:
+- Submitting unmarked LLM-generated writing as their own
+- Using LLMs to commit academic fraud
+- Presenting the substantive contributions of an LLM as their own work
+
+The fundamental principle is that LLMs should augment, not replace, the research process. They are tools to enhance researcher productivity and creativity, not substitutes for scholarly expertise.
+
+## Nature's Guidelines for LLM Use
+
+Nature has published comprehensive [guidelines](https://www.nature.com/articles/d41586-025-01069-0) for using LLMs in research that emphasize transparency and responsible authorship.
+
+### Transparency Requirements
+When publishing research that utilized LLMs, Nature requires:
+- Clear disclosure of LLM use in the methods section
+- Specification of the model version and provider
+- Details about the prompt engineering process
+- Explanation of verification procedures used to validate LLM outputs
+- Inclusion of prompts in supplementary materials
+
+### Authorship Standards
+Regarding authorship, Nature stipulates that:
+- LLMs cannot be listed as authors on papers
+- Human authors must take full responsibility for LLM-generated content
+- All LLM-generated content must be fact-checked
+- Appropriate citation of LLM providers is necessary
+- Documentation should clearly indicate which text was generated by LLMs
+
+## Documenting LLM Use in Research
+
+Proper documentation of LLM use is crucial for transparency and reproducibility. Here's a template for documenting your LLM usage:
+
+```markdown
+# LLM Usage Documentation
+
+## Model Information
+- **Model**: GPT-4 (gpt-4-0613)
+- **Provider**: OpenAI
+- **Access Date**: April 22, 2024
+- **Temperature**: 0.2
+
+## Usage Purposes
+1. Literature search assistance
+2. Code debugging
+3. Writing refinement
+
+## Example Prompts
+### Literature Search
+Identify key papers on behavioral economics and climate change 
+policy published between 2018-2023 in top economics journals.
+```
+
+## LLMs for Research Ideation
+
+Stremersch et al. (2024) discuss how generating great research ideas remains a critical skill, and generative AI can play a supportive role in this process. One principle of successful ideation is volume—having more ideas increases the likelihood of finding excellent ones.
+
+However, Girotra et al. (2023) caution that ideas from LLMs are a "dime a dozen," suggesting that while LLMs can generate numerous ideas, researchers must still apply critical evaluation and refinement.
+
+## Silicone Sampling: LLMs as Synthetic Respondents
+
+An emerging research application of LLMs is "silicone sampling"—using AI models as synthetic respondents. Studies by Argyle et al. (2023) and Sarstedt et al. (2024) have explored how LLMs can function as stand-ins for human participants in certain research contexts.
+
+Arora et al. (2025) demonstrate that synthetic respondents can yield valuable qualitative insights, though with important limitations. This approach may be particularly useful for preliminary research, hypothesis generation, or when access to specific populations is limited.
+
+## LLMs for Research Design Decisions
+
+When faced with research design choices, LLMs can serve as helpful consultants. They can provide documentation for your methodological decisions and offer starting points for consideration. This doesn't replace researcher judgment but can help explore options and considerations more efficiently.
+
+## API vs. Chat Interfaces: Choosing Your Approach
+
+There are two primary ways to interact with LLMs in research: through chat interfaces or API integration.
+
+### Chat Interfaces
+Chat interfaces like ChatGPT or Claude offer:
+- Interactive, conversational experiences
+- No programming requirements
+- Excellent tools for exploration and brainstorming
+- Limited customization options
+
+A typical chat interaction might look like:
+```
+User: Analyze this data trend
+LLM: I notice three key patterns...
+User: What might explain the outliers?
+LLM: The outliers could be due to...
+```
+
+### API Integration
+For more advanced applications, API integration provides:
+- Programmatic access to LLM capabilities
+- Custom application development
+- System-level integration possibilities
+- Greater control and flexibility
+- The ability to incorporate multiple LLMs in one workflow
+
+```python
+# assisted by Cursor AI
+def analyze_data(data):
+    llm_response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You analyze economic data."},
+            {"role": "user", "content": f"Analyze: {data}"}
+        ],
+        temperature=0.2
+    )
+    return llm_response.choices[0].message.content
+```
+
+## Building Your Academic LLM Toolbox
+
+LLMs can serve multiple valuable functions in your research workflow:
+- Providing inexpensive second opinions on your work
+- Playing devil's advocate to challenge your assumptions
+- Helping workshop survey questions and experimental stimuli
+- Taking over tedious, repetitive text-based tasks
+- Improving project documentation and organization
+
+By thoughtfully incorporating these tools while adhering to ethical guidelines and transparency principles, researchers can enhance their productivity while maintaining the integrity of their scholarly work.

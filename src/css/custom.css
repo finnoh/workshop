@@ -1,0 +1,250 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-first websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #1a237e;
+  --ifm-color-primary-dark: #171f71;
+  --ifm-color-primary-darker: #161d6b;
+  --ifm-color-primary-darkest: #111658;
+  --ifm-color-primary-light: #1d278b;
+  --ifm-color-primary-lighter: #1e2991;
+  --ifm-color-primary-lightest: #232fa4;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --ifm-navbar-padding-horizontal: 2rem;
+  --ifm-navbar-height: 4rem;
+  --hero-gradient-start: #1a237e;
+  --hero-gradient-mid: #0277bd;
+  --hero-gradient-end: #00bcd4;
+}
+
+/* Navbar styling */
+.navbar {
+  box-shadow: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(0);
+  -webkit-backdrop-filter: blur(0);
+  padding: 1rem var(--ifm-navbar-padding-horizontal);
+}
+
+/* Transparent navbar for homepage that becomes visible on scroll */
+[class*='homepage'] .navbar {
+  background-color: transparent;
+}
+
+[class*='homepage'] .navbar.navbar-scroll {
+  background: linear-gradient(145deg, 
+    rgba(26, 35, 126, 0.95), 
+    rgba(2, 119, 189, 0.95)
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Regular navbar for other pages */
+.navbar:not([class*='homepage']) {
+  background: linear-gradient(145deg, 
+    rgba(26, 35, 126, 0.95), 
+    rgba(2, 119, 189, 0.95)
+  );
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar__inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--ifm-spacing-horizontal);
+}
+
+.navbar__brand {
+  color: white;
+  margin-right: 2rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.navbar__brand:hover {
+  opacity: 0.9;
+}
+
+.navbar__link {
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  color: rgba(255, 255, 255, 0.9);
+  position: relative;
+  margin: 0 0.25rem;
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: white;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  transform: translateY(-1px);
+}
+
+.navbar__link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: white;
+  transition: all 0.2s ease;
+  transform: translateX(-50%);
+}
+
+.navbar__link--active::after {
+  width: 80%;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] {
+  --ifm-color-primary: #00bcd4;
+  --ifm-color-primary-dark: #00a9bf;
+  --ifm-color-primary-darker: #009fb4;
+  --ifm-color-primary-darkest: #008394;
+  --ifm-color-primary-light: #00cfe9;
+  --ifm-color-primary-lighter: #00d9f4;
+  --ifm-color-primary-lightest: #0ae6ff;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='dark'] .navbar__link:hover,
+[data-theme='dark'] .navbar__link--active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.hero {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.hero__title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.hero__subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureImage {
+  height: 200px;
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
+.col {
+  padding: 2rem;
+}
+
+.col h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.col p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* GitHub icon */
+.header-github-link:hover {
+  opacity: 0.6;
+}
+
+.header-github-link::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+[data-theme='dark'] .header-github-link::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+/* Mobile navbar adjustments */
+@media screen and (max-width: 996px) {
+  .navbar {
+    padding: 0.5rem var(--ifm-navbar-padding-horizontal);
+  }
+
+  .navbar__toggle {
+    color: white;
+    margin-right: 0;
+  }
+
+  .navbar-sidebar {
+    background: linear-gradient(145deg, 
+      var(--hero-gradient-start),
+      var(--hero-gradient-mid)
+    );
+  }
+
+  .navbar-sidebar__brand {
+    box-shadow: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .navbar-sidebar__items {
+    padding: 1rem 0;
+  }
+
+  .navbar-sidebar__item {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-sidebar__back {
+    color: white;
+    opacity: 0.8;
+  }
+
+  .navbar-sidebar__close {
+    color: white;
+  }
+
+  .navbar__brand {
+    margin-right: 1rem;
+  }
+
+  .navbar__link {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .navbar__link:hover,
+  .navbar__link--active {
+    background-color: rgba(255, 255, 255, 0.05);
+    transform: none;
+  }
+
+  .navbar__link::after {
+    display: none;
+  }
+}

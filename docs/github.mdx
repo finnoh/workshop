@@ -1,0 +1,111 @@
+---
+sidebar_position: 7
+title: "👥 GitHub"
+---
+
+# 👥 GitHub
+
+## Managing Files in Git Repositories
+
+When working with Git repositories, it's important to be mindful of what files you commit. Two common issues that researchers encounter are large files and private information.
+
+Files larger than 100MB can cause problems with GitHub repositories, as GitHub has size limitations. When you accidentally commit large files, you may need to use `git filter-branch` to remove them from your repository history.
+
+For sensitive or private information, you should use a `.gitignore` file to prevent these files from being tracked. Secrets like API keys should be stored in `.env` files (which should also be added to your `.gitignore`). For truly sensitive research data, consider using private repositories instead of public ones.
+
+:::caution
+Once a file is committed to a public repository, it should be considered permanently public, even if you delete it later. Git preserves history, making it difficult to completely remove sensitive information.
+:::
+
+## GitHub for Academic Research
+
+GitHub offers powerful tools that can enhance your academic research workflow in multiple ways.
+
+### Code & Data Management
+
+GitHub provides an excellent platform for sharing code alongside your research papers. This promotes reproducibility and allows others to build upon your work. You can use version control to track changes in your manuscripts, making it easy to collaborate with co-authors and maintain a clear history of revisions. Additionally, GitHub serves as a reliable host for supplementary materials that might not fit in your published paper.
+
+### Research Impact
+
+Creating a dedicated website for your paper using GitHub Pages can significantly increase its visibility and accessibility. For code releases, you can obtain Digital Object Identifiers (DOIs) through integrations with services like Zenodo, making your code properly citable in academic contexts. GitHub also makes it easier to discover and build upon others' research, fostering a collaborative research environment.
+
+## GitHub Research Workflow
+
+Establishing a consistent workflow for your research projects on GitHub can improve organization and collaboration efficiency.
+
+### Best Practices
+
+Consider creating a repository template for your research projects to maintain consistency across studies. This template can include standard directories and files that you commonly use. Using branches for different research steps or experiments helps keep your main branch stable while exploring new ideas. Always include a comprehensive README file with clear instructions on how to use your code and reproduce your results.
+
+### Common Structure
+
+A well-organized repository structure makes your research more accessible to others and easier for you to maintain. Here's a typical structure for research projects:
+
+```bash
+research-project/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── code/
+│   ├── analysis/
+│   └── figures/
+├── paper/
+│   └── drafts/
+├── README.md
+└── requirements.txt
+```
+
+This structure separates raw data from processed data, organizes code by function, and keeps paper drafts in their own directory. The README provides an overview, while requirements.txt lists dependencies needed to run your code.
+
+## Advanced GitHub Features for Research
+
+GitHub offers several advanced features that can enhance your research workflow beyond basic version control.
+
+### Issues for Research Management
+
+Issues in GitHub can be repurposed to track paper revisions, manage research tasks, and discuss methodological questions. By using custom labels, you can categorize issues by type or priority:
+
+```yaml
+labels:
+  - "revision A"
+  - "data collection"
+  - "methodology"
+  - "reviewer comments"
+```
+
+This system creates a transparent record of research decisions and helps team members stay coordinated throughout the project.
+
+### GitHub Pages for Research Communication
+
+GitHub Pages allows you to create websites directly from your repositories. This feature is perfect for creating research portfolios, sharing comprehensive documentation, or publishing interactive visualizations of your results. You can automate the deployment process using GitHub Actions:
+
+```yaml
+# GitHub Action for Pages
+name: Deploy Pages
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+```
+
+### Automation with Actions and Pull Requests
+
+GitHub Actions enables powerful automation capabilities for your research workflow. You can set up automated unit tests to ensure your analysis code remains functional, implement continuous integration/continuous deployment (CI/CD) pipelines, or even schedule automated data collection:
+
+```yaml
+# Webscraper workflow
+name: Data Collection
+on:
+  schedule:
+    - cron: '0 0 * * *'
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+```
+
+Pull Requests (PRs) provide a structured way to review changes before they're merged into your main codebase, which is particularly valuable when collaborating with other researchers or when implementing significant methodological changes.
+
+:::tip
+Consider setting up branch protection rules that require code review before merging into your main branch. This extra step helps catch errors and ensures quality control in your research code.
+:::

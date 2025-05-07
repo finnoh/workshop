@@ -1,0 +1,242 @@
+---
+sidebar_position: 2
+title: "LLMs in Research 🔬"
+---
+
+# LLMs in Research 🔬
+
+## The Creator of Keras on LLMs in Research
+
+François Chollet, the creator of Keras and author of "Deep Learning with Python," shared his thoughts on the impact of LLMs in research:
+
+<blockquote class="twitter-tweet">
+  <p lang="en" dir="ltr">LLMs are having a massive impact on research productivity. Based on my conversations with researchers:<br/><br/>1) Literature review is 5-10x faster<br/>2) Writing is 2-3x faster<br/>3) Coding is 2-3x faster<br/><br/>Overall productivity boost: easily 2-3x.</p>
+  &mdash; François Chollet (@fchollet) <a href="https://twitter.com/fchollet/status/1789701269982228572">December 20, 2023</a>
+</blockquote>
+
+## Nature Survey: Benefits of Generative AI in Research
+
+A [*Nature*](https://www.nature.com/articles/d41586-023-02980-0) survey of scientists found significant benefits of using generative AI in research. Here's a visualization of the survey results:
+
+```r
+# assisted by Cursor AI
+# Replicate Nature's 'Benefits of Generative AI' bar plot
+ddBenefits <- data.frame(
+  sBenefit = c(
+    "Helps researchers without English as a first language",
+    "Makes coding easier and faster",
+    "Summarizes other research to save time reading it",
+    "Speeds administrative tasks",
+    "Helps write manuscripts faster",
+    "Improves scientific search",
+    "Helps creative work by brainstorming new ideas",
+    "Generates new research hypotheses",
+    "Helps peer-review manuscripts faster",
+    "Other"
+  ),
+  dPercent = c(56, 45, 40, 38, 35, 33, 28, 18, 13, 3)
+)
+
+lOrder <- ddBenefits$sBenefit[order(ddBenefits$dPercent, decreasing = TRUE)]
+
+ggplot(ddBenefits, aes(x = reorder(sBenefit, dPercent), y = dPercent)) +
+  geom_col(fill = "#d2693a") +
+  coord_flip() +
+  scale_y_continuous(labels = function(x) paste0(x, "%"), limits = c(0, 60)) +
+  labs(
+    title = "Benefits of Generative AI",
+    subtitle = "Q: What do you think are currently the biggest benefits of generative AI for research?",
+    x = NULL,
+    y = NULL
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.text.x = element_blank(),
+    axis.ticks.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+## Discussion: LLMs in Research
+
+:::tip Discussion Questions
+1. Should we use LLMs in research? Discuss with your neighbor. (5 minutes)
+2. How would you (or do you) use LLMs in your research? Share your thoughts with your neighbor. (5 minutes)
+:::
+
+## Privacy Concerns with LLMs
+
+When using LLMs, especially commercial models, it's crucial to be aware of privacy implications:
+
+- LLMs are trained on vast amounts of data, including the inputs you provide.
+- Your prompts, files, and other data sent to commercial LLMs may become part of their training data.
+
+### Red Flags 🚩
+
+Be cautious about sharing:
+
+- Early drafts of your papers
+- Raw data (especially if covered by an NDA)
+- Personal data (e.g., names, emails, addresses)
+
+:::caution
+Remember that GDPR and other data protection regulations apply when using LLMs. You might inadvertently send data outside the EU.
+:::
+
+## Solutions for Privacy-Conscious LLM Use
+
+Despite privacy concerns, there are ways to leverage LLMs safely in research:
+
+1. **ERUDITE at EUR**: 
+   - GPT-4 instance available through MS Teams
+   - Safe for sensitive data
+   - Currently chat-based only
+
+2. **Host open-source LLMs on Snellius**:
+   - Use the Dutch supercomputer to run your own LLM
+   - Data stays on Snellius, ensuring privacy
+
+3. **oLLAMA for local LLM use**:
+   - Run small LLMs on your own machine
+   - Free, simple, and open-source
+   - Enables privacy-secure LLM applications
+
+## Tinbergen Institute Guidelines for LLM Use in Research
+
+| Acceptable Use Cases | Prohibited Use Cases |
+|----------------------|----------------------|
+| Literature review assistance | Fabricating results |
+| Code generation & debugging | Replacing critical thinking |
+| Data analysis interpretation | Producing entire papers |
+| Writing refinement | Creating synthetic data without disclosure |
+| Translation services | Bypassing ethical reviews |
+| Research idea generation | |
+
+:::important
+Remember: LLMs should augment, not replace, the research process.
+:::
+
+## Nature's Guidelines for LLM Use in Research
+
+### Transparency Requirements
+- Disclose LLM use in the methods section
+- Specify model version and provider
+- Detail prompt engineering process
+- Explain verification procedures
+- Share prompts in supplementary materials
+
+### Authorship Standards
+- LLMs cannot be authors
+- Authors take responsibility for LLM outputs
+- Content must be fact-checked
+- Cite LLM providers appropriately
+- Document when text is LLM-generated
+
+## Documenting LLM Use in Research
+
+Here's an example of how to document LLM usage in your research:
+
+```markdown
+# LLM Usage Documentation
+
+## Model Information
+- **Model**: GPT-4 (gpt-4-0613)
+- **Provider**: OpenAI
+- **Access Date**: April 22, 2024
+- **Temperature**: 0.2
+
+## Usage Purposes
+1. Literature search assistance
+2. Code debugging
+3. Writing refinement
+
+## Example Prompts
+### Literature Search
+Identify key papers on behavioral economics and climate change 
+policy published between 2018-2023 in top economics journals.
+```
+
+## LLMs in Research Ideation
+
+Stremersch et al. (2024) discuss generating great research ideas, and GenAI can play a role in this process:
+
+- LLMs can help generate more ideas, increasing the chances of finding good ones.
+- Use LLMs for supporting tasks like analyzing trends or spaces.
+- Ask LLMs for potential findings for a research idea to challenge your expectations.
+- Fine-tune LLMs on target journal content to align ideas with publication goals.
+
+:::note
+Ideas from LLMs are plentiful, but quality assessment is crucial (Girotra & Netessine, 2023).
+:::
+
+## Synthetic Respondents and Theorizing
+
+Recent research explores using LLMs to generate synthetic respondents:
+
+- Sarstedt et al. (2024) and Argyle et al. (2023) discuss methods for creating synthetic survey respondents.
+- Arora et al. (2025) demonstrate how synthetic respondents can yield qualitative insights for theorizing.
+
+This approach can be valuable for:
+- Pilot testing survey instruments
+- Exploring potential responses to research questions
+- Generating hypotheses for further investigation
+
+## LLMs in Coding and Design Choices
+
+1. **Coding Support**: Stay tuned for the second workshop to learn more about using LLMs for coding assistance.
+
+2. **Design Choices**: Leverage LLMs to:
+   - Document your design decisions
+   - Explore alternative approaches
+   - Generate starting points for methodology discussions
+
+:::tip
+When facing design choices, ask the LLM for input. This can provide documentation for your choices and serve as a starting point for further refinement.
+:::
+
+## API vs. Chat Use of LLMs
+
+| Chat Interfaces | API Integration |
+|-----------------|-----------------|
+| Interactive conversations | Programmatic access |
+| No programming required | Custom applications |
+| Good for exploration | System-level integration |
+| Limited customization | More control and flexibility |
+| Examples: ChatGPT, Claude Web | Multiple LLMs in one workflow |
+
+### Chat Example:
+```
+User: Analyze this data trend
+LLM: I notice three key patterns...
+User: What might explain the outliers?
+LLM: The outliers could be due to...
+```
+
+### API Example:
+```python
+# assisted by Cursor AI
+def analyze_data(data):
+    llm_response = client.chat.completions.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You analyze economic data."},
+            {"role": "user", "content": f"Analyze: {data}"}
+        ],
+        temperature=0.2
+    )
+    return llm_response.choices[0].message.content
+```
+
+## Essential LLM Use-Cases for Future Researchers
+
+1. **Cheap second opinions**: Get quick feedback on ideas or analyses.
+2. **Devil's advocate**: Challenge your assumptions and identify potential weaknesses.
+3. **Workshop survey questions and experimental stimuli**: Refine research instruments.
+4. **Taking over tedious tasks**: Automate repetitive, text-based, or time-consuming processes.
+5. **Improving project documentation**: Generate and maintain comprehensive documentation.
+
+:::caution
+While LLMs can significantly enhance research productivity, always maintain critical thinking and rigorous verification processes.
+:::
